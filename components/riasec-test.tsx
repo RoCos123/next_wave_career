@@ -16,6 +16,7 @@ interface Question {
   id: number
   question_text_en: string
   question_text_es: string
+  question_text_ro: string
   riasec_type: string
 }
 
@@ -222,12 +223,14 @@ export default function RiasecTest({ user }: RiasecTestProps) {
           </div>
 
           <h2 className="text-xl font-serif font-semibold text-foreground mb-2">
-            {language === "en" ? "RIASEC Career Assessment" : "Evaluación de Carrera RIASEC"}
+            {language === "en" ? "RIASEC Career Assessment" : language === "es" ? "Evaluación de Carrera RIASEC" : "Evaluare de Carieră RIASEC"}
           </h2>
           <p className="text-muted-foreground">
             {language === "en"
               ? `Question ${currentQuestionIndex + 1} of ${questions.length}`
-              : `Pregunta ${currentQuestionIndex + 1} de ${questions.length}`}
+              : language === "es"
+              ? `Pregunta ${currentQuestionIndex + 1} de ${questions.length}`
+              : `Întrebarea ${currentQuestionIndex + 1} din ${questions.length}`}
           </p>
 
           {!user && (
@@ -235,7 +238,9 @@ export default function RiasecTest({ user }: RiasecTestProps) {
               <p className="text-sm text-blue-800">
                 {language === "en"
                   ? "Taking the test anonymously. Sign up after completion to save your results permanently."
-                  : "Realizando la prueba de forma anónima. Regístrate después de completarla para guardar tus resultados permanentemente."}
+                  : language === "es"
+                  ? "Realizando la prueba de forma anónima. Regístrate después de completarla para guardar tus resultados permanentemente."
+                  : "Faci testul anonim. Înregistrează-te după finalizare pentru a salva rezultatele permanent."}
               </p>
             </div>
           )}
@@ -250,12 +255,14 @@ export default function RiasecTest({ user }: RiasecTestProps) {
         <Card className="mb-8">
           <CardHeader>
             <CardTitle className="font-serif text-lg">
-              {language === "en" ? currentQuestion.question_text_en : currentQuestion.question_text_es}
+              {language === "en" ? currentQuestion.question_text_en : language === "es" ? currentQuestion.question_text_es : currentQuestion.question_text_ro}
             </CardTitle>
             <CardDescription>
               {language === "en"
                 ? "Rate how much this statement describes you:"
-                : "Califica qué tanto te describe esta afirmación:"}
+                : language === "es"
+                ? "Califica qué tanto te describe esta afirmación:"
+                : "Evaluează cât de mult te descrie această afirmație:"}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -264,31 +271,31 @@ export default function RiasecTest({ user }: RiasecTestProps) {
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="0" id="r1" />
                   <Label htmlFor="r1" className="flex-1 cursor-pointer">
-                    {language === "en" ? "Strongly Disagree" : "Totalmente en desacuerdo"}
+                    {language === "en" ? "Strongly Disagree" : language === "es" ? "Totalmente en desacuerdo" : "Total dezacord"}
                   </Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="0.1" id="r2" />
                   <Label htmlFor="r2" className="flex-1 cursor-pointer">
-                    {language === "en" ? "Disagree" : "En desacuerdo"}
+                    {language === "en" ? "Disagree" : language === "es" ? "En desacuerdo" : "Dezacord"}
                   </Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="0.2" id="r3" />
                   <Label htmlFor="r3" className="flex-1 cursor-pointer">
-                    {language === "en" ? "Neutral" : "Neutral"}
+                    {language === "en" ? "Neutral" : language === "es" ? "Neutral" : "Neutru"}
                   </Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="1" id="r4" />
                   <Label htmlFor="r4" className="flex-1 cursor-pointer">
-                    {language === "en" ? "Agree" : "De acuerdo"}
+                    {language === "en" ? "Agree" : language === "es" ? "De acuerdo" : "De acord"}
                   </Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="1.1" id="r5" />
                   <Label htmlFor="r5" className="flex-1 cursor-pointer">
-                    {language === "en" ? "Strongly Agree" : "Totalmente de acuerdo"}
+                    {language === "en" ? "Strongly Agree" : language === "es" ? "Totalmente de acuerdo" : "Total de acord"}
                   </Label>
                 </div>
               </div>
@@ -307,7 +314,7 @@ export default function RiasecTest({ user }: RiasecTestProps) {
             {submitting ? (
               <div className="flex items-center">
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                {language === "en" ? "Saving..." : "Guardando..."}
+                {language === "en" ? "Saving..." : language === "es" ? "Guardando..." : "Se salvează..."}
               </div>
             ) : currentQuestionIndex === questions.length - 1 ? (
               <>
