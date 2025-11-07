@@ -310,9 +310,9 @@ const translations = {
     "nav.getStarted": "Începe",
 
     // Homepage
-    "home.title": "Descoperă-ți Calea Profesională Perfectă",
+    "home.title": "Descoperă-ți calea profesională potrivită",
     "home.subtitle":
-      "Fă testul nostru comprehensiv de personalitate RIASEC pentru a descoperi cariere care se aliniază cu interesele, abilitățile și personalitatea ta. Primește recomandări personalizate pentru joburi tradiționale și viitoare.",
+      "Fă testul validat științificiv de personalitate RIASEC pentru a descoperi cariere care se aliniază cu interesele, abilitățile și personalitatea ta. Primește recomandări personalizate pentru joburi tradiționale și viitoare.",
     "home.cta.primary": "Începe Evaluarea de Carieră",
     "home.cta.secondary": "Află Mai Mult",
     "home.features.title": "De Ce să Alegi NextWave Careers?",
